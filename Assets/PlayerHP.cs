@@ -13,18 +13,16 @@ public class PlayerHP : MonoBehaviour
         hpText.text = "HP : " + hp;
     }
 
-    void Update()
-    {
-        if (hp <= 0 && Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(
-                SceneManager.GetActiveScene().name
-            );
-        }
-    }
     public void TakeDamage(int damage)
     {
+        
+        if (hp <= 0)
+            return;
+
         hp -= damage;
+
+        if (hp < 0)
+            hp = 0;
 
         hpText.text = "HP : " + hp;
 

@@ -1,11 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // ゲームが開始したかどうか
     public static bool gameStarted = false;
 
-    // タイトル文字
     public GameObject titleText;
 
     void Start()
@@ -19,10 +18,16 @@ public class GameManager : MonoBehaviour
         if (!gameStarted && Input.GetKeyDown(KeyCode.Space))
         {
             gameStarted = true;
-
             titleText.SetActive(false);
-
             Time.timeScale = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(
+                SceneManager.GetActiveScene().name
+            );
         }
     }
 }
